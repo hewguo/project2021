@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.7.RELEASE</version>
+    </parent>
+
+    <groupId>com.suola</groupId>
+    <artifactId>project2021</artifactId>
+    <version>1.0</version>
+    <name>projectview</name>
+    <description>Project File Viewer</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.github.typhon0/AnimateFX -->
+        <dependency>
+            <groupId>io.github.typhon0</groupId>
+            <artifactId>AnimateFX</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.controlsfx/controlsfx -->
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>8.40.14</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/de.jensd/fontawesomefx -->
+        <dependency>
+            <groupId>de.jensd</groupId>
+            <artifactId>fontawesomefx</artifactId>
+            <version>8.9</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.jfoenix/jfoenix -->
+        <dependency>
+            <groupId>com.jfoenix</groupId>
+            <artifactId>jfoenix</artifactId>
+            <version>8.0.7</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/eu.hansolo/tilesfx -->
+        <dependency>
+            <groupId>eu.hansolo</groupId>
+            <artifactId>tilesfx</artifactId>
+            <version>1.6.5</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/eu.hansolo/colors -->
+        <dependency>
+            <groupId>eu.hansolo</groupId>
+            <artifactId>colors</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.suola</groupId>
+            <artifactId>GNAvatarView</artifactId>
+            <version>1.0-rc</version>
+            <systemPath>${project.basedir}/lib/GNAvatarView-1.0-rc.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.suola</groupId>
+            <artifactId>GNCarousel</artifactId>
+            <version>2.1.5</version>
+            <systemPath>${project.basedir}/lib/GNCarousel-2.1.5.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.suola</groupId>
+            <artifactId>GNButton</artifactId>
+            <version>1.1.0</version>
+            <systemPath>${project.basedir}/lib/GNButton-1.1.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.suola</groupId>
+            <artifactId>GNCalendar</artifactId>
+            <version>1.0-alpha</version>
+            <systemPath>${project.basedir}/lib/GNCalendar-1.0-alpha.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.suola</groupId>
+            <artifactId>GNDecorator</artifactId>
+            <version>2.1.2-alpha</version>
+            <systemPath>${project.basedir}/lib/GNDecorator-2.1.2-alpha.jar</systemPath>
+        </dependency>
+
+        <!-- web配置 -->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                    <groupId>org.springframework.boot</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jetty</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>4.11</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.7</version>
+        </dependency>
+        <!-- mpp文件的支持 -->
+        <dependency>
+            <groupId>net.sf.mpxj</groupId>
+            <artifactId>mpxj</artifactId>
+            <version>8.3.5</version>
+        </dependency>
+
+        <!-- web配置结束 -->
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
