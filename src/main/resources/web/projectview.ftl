@@ -60,7 +60,7 @@
     //alert(window.screen.height);
     //alert(document.body.offsetHeight);
     var project = new PlusProject();
-    project.setStyle("width:100%;height:400px");
+    project.setStyle("width:100%;height:"+(window.innerHeight-63)+"px");
     project.setColumns([
         new PlusProject.IDColumn(),
         new PlusProject.StatusColumn(),
@@ -83,6 +83,15 @@
     project.enableManualSchedule = true;        //启用手动模式
 
     project.on('taskdblclick',onTaskDblClick);
+
+    //根据浏览器窗口大小调整project主界面大小
+    window.onresize=function(){
+        // alert(document.body.clientHeight);
+        // alert(window.screen.availHeight);
+        // alert(window.innerHeight);
+        //project.setStyle("width:100%;height:400px");
+        project.setStyle("width:100%;height:"+(window.innerHeight-63)+"px");
+    }
 
     //创建右键菜单
     var menu = new ProjectMenu();

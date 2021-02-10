@@ -15,11 +15,13 @@
     <version>1.0</version>
     <name>projectview</name>
     <description>Project File Viewer</description>
+<!--    <packaging>jar</packaging>-->
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+<!--        <start-class>com.suola.project.ProjectViewerApplication</start-class>-->
     </properties>
 
     <dependencies>
@@ -68,36 +70,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.suola</groupId>
-            <artifactId>GNAvatarView</artifactId>
-            <version>1.0-rc</version>
-            <systemPath>${project.basedir}/lib/GNAvatarView-1.0-rc.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>com.suola</groupId>
-            <artifactId>GNCarousel</artifactId>
-            <version>2.1.5</version>
-            <systemPath>${project.basedir}/lib/GNCarousel-2.1.5.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>com.suola</groupId>
-            <artifactId>GNButton</artifactId>
-            <version>1.1.0</version>
-            <systemPath>${project.basedir}/lib/GNButton-1.1.0.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>com.suola</groupId>
-            <artifactId>GNCalendar</artifactId>
-            <version>1.0-alpha</version>
-            <systemPath>${project.basedir}/lib/GNCalendar-1.0-alpha.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>com.suola</groupId>
-            <artifactId>GNDecorator</artifactId>
-            <version>2.1.2-alpha</version>
-            <systemPath>${project.basedir}/lib/GNDecorator-2.1.2-alpha.jar</systemPath>
-        </dependency>
 
         <!-- web配置 -->
 
@@ -123,17 +95,6 @@
             <groupId>net.logstash.logback</groupId>
             <artifactId>logstash-logback-encoder</artifactId>
             <version>4.11</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
@@ -164,6 +125,31 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.suola.project.ProjectViewerApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.zenjava</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>8.8.3</version>
+                <configuration>
+                    <mainClass>com.suola.project.ProjectViewerApplication</mainClass>
+                    <vendor>suola</vendor>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>2.5.2</version>
             </plugin>
         </plugins>
     </build>

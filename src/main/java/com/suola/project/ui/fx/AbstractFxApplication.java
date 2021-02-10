@@ -1,7 +1,7 @@
 package com.suola.project.ui.fx;
 
-import com.gn.decorator.GNDecorator;
 import com.sun.javafx.application.LauncherImpl;
+import com.suola.project.ui.utils.decoratorlib.GNDecorator;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.application.Preloader;

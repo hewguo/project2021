@@ -1,5 +1,6 @@
 package com.suola.project.ui.controller;
 
+import com.suola.project.util.ServerConfig;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
@@ -10,6 +11,9 @@ import javafx.scene.control.ProgressIndicator;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebEvent;
 import javafx.scene.web.WebView;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.SpringApplication;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -25,12 +29,19 @@ public class WebviewController implements Initializable {
 	@FXML
 	private ProgressIndicator progressIndicator;
 
+	@Autowired
+	private ServerConfig serverConfig;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-//		setUrl("http://localhost:8012/index");
-//		System.out.println("WebviewController init..................");
+		int serverPort=0;
+		try{
+			serverPort=serverConfig.getServerPort();
+		}catch (Exception ex){
 
-		setUrl("http://localhost:8088/");
+		}
+
+		setUrl("http://localhost:"+serverPort+"/");
 		WebEngine webEngine = webView.getEngine();
 		webEngine.setOnResized((WebEvent<Rectangle2D> event) -> {
 			// To change body of generated methods, choose Tools | Templates.

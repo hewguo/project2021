@@ -1,9 +1,9 @@
 package com.suola.project.ui.config;
 
-import com.gn.decorator.GNDecorator;
 import com.suola.project.ui.fx.SpringFXMLLoader;
 import com.suola.project.ui.fx.StageManager;
 import com.suola.project.ui.utils.ExceptionWriter;
+import com.suola.project.ui.utils.decoratorlib.GNDecorator;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

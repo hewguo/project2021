@@ -4,7 +4,7 @@ javafx:
   title: MyCoolApp
 
 server:
-  port: 8088
+  port: 0
   servlet:
     context-path: /
 
@@ -20,3 +20,11 @@ spring:
     expose-session-attributes: true
     request-context-attribute: request
     suffix: .ftl
+
+debug: false
+logging:
+  file:
+    path: logs
+#  pattern:
+#    console: %d{yyyy/MM/dd-HH:mm:ss} [%thread] %-5level %logger- %msg%n
+#    file: %d{yyyy/MM/dd-HH:mm} [%thread] %-5level %logger- %msg%n

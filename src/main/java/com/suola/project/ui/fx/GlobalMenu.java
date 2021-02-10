@@ -4,6 +4,7 @@ import com.suola.project.model.PROJECTDB;
 import com.suola.project.ui.controller.WebviewController;
 import com.suola.project.util.ApplicationContextProvider;
 import com.suola.project.util.MppUtils;
+import com.suola.project.util.ServerConfig;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
@@ -26,6 +27,8 @@ import java.io.File;
 public class GlobalMenu extends ContextMenu {
     private static GlobalMenu INSTANCE = null;
 
+    private ServerConfig serverConfig;
+
     private static WebviewController webviewController;
 //    protected static ConfigurableApplicationContext applicationContext;
 
@@ -33,10 +36,8 @@ public class GlobalMenu extends ContextMenu {
     {
         MenuItem openFileMenu=new MenuItem("打开文件");
         MenuItem saveFileMenu=new MenuItem("保存文件");
-//        System.out.println("globalmenu init..................");
-//        WebApplicationContext wac= ContextLoader.getCurrentWebApplicationContext();
-//        webviewController=wac.getBean(WebviewController.class);
         webviewController= ApplicationContextProvider.getBean(WebviewController.class);
+        serverConfig=ApplicationContextProvider.getBean(ServerConfig.class);
 
         getItems().add(openFileMenu);
         getItems().add(saveFileMenu);
@@ -56,12 +57,24 @@ public class GlobalMenu extends ContextMenu {
                 MppUtils mppUtils=new MppUtils();
                 PROJECTDB.getInstance().setProjectModel(mppUtils.readFile(file.getAbsolutePath()));
 
-//                System.out.println(PROJECTDB.getInstance().getProjectModel().toString());
+                int serverPort=0;
+                try{
+                    serverPort=serverConfig.getServerPort();
+                }catch (Exception ex){
+
+                }
+
+                StageManager stageManager=ApplicationContextProvider.getBean(StageManager.class);
 
                 if(PROJECTDB.getInstance().getProjectModel()!=null){
-                    webviewController.setUrl("http://localhost:8088/projectview");
+                    webviewController.setUrl("http://localhost:"+serverPort+"/projectview");
+
+                    stageManager.getDecorator().setTitle("Project2021-"+file.getName());
+                    stageManager.getDecorator().centralizeTitle();
                 }else {
-                    webviewController.setUrl("http://localhost:8088/");
+                    webviewController.setUrl("http://localhost:"+serverPort+"/");
+                    stageManager.getDecorator().setTitle("Project2021");
+                    stageManager.getDecorator().centralizeTitle();
                 }
             }
 
