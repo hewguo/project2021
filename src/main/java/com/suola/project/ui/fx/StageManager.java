@@ -47,8 +47,10 @@ public class StageManager {
 			Menu menu=new Menu("文件");
 			MenuItem openMenu=new MenuItem("打开");
 			MenuItem saveMenu=new MenuItem("保存");
+			MenuItem exitMenu=new MenuItem("退出");
 			menu.getItems().add(openMenu);
 			menu.getItems().add(saveMenu);
+			menu.getItems().add(exitMenu);
 			decorator.addMenu(menu);
 
 			WebviewController webviewController= ApplicationContextProvider.getBean(WebviewController.class);
@@ -91,6 +93,14 @@ public class StageManager {
 							stageManager.getDecorator().setTitle("Project2021");
 						}
 					}
+				}
+			});
+
+			exitMenu.setOnAction(new EventHandler<ActionEvent>(){
+
+				@Override
+				public void handle(ActionEvent event) {
+					Platform.exit();
 				}
 			});
 
