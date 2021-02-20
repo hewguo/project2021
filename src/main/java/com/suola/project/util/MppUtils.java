@@ -21,10 +21,12 @@ import java.util.List;
  * @ClassName MppUtils
  * @Description TODO project文件读写工具，基于mpxj组件(https://github.com/joniles/mpxj/releases)
  * TODO 部门与负责人信息MPP中没有相关信息，这里写死
+ * TODO 2021.2.20，修正读取空任务的错误
  * @Author hewguo
  * @Date 2020-12-16 15:22
  * @Version 1.0
  **/
+
 @Component
 public class MppUtils {
     private final Logger logger = LoggerFactory.getLogger(MppUtils.class);
@@ -296,13 +298,22 @@ public class MppUtils {
                 BaseTask baseTask=new BaseTask();
 
                 //=======
+                logger.info("uid:{} -- id:{}",task.getUniqueID(),task.getID());
 
                 baseTask.setId(task.getID());//Number。序号
                 baseTask.setName(task.getName());//任务名称
-                baseTask.setStart(dateFormat.format(task.getStart()));//DateTime。开始日期
-                baseTask.setFinish(dateFormat.format(task.getFinish()));//DateTime。完成日期
-                baseTask.setDuration(new Double(task.getDuration().getDuration()).longValue());//Number。工期
-                baseTask.setPercentComplete(task.getPercentageComplete().longValue());//Number。进度
+                if(task.getStart()!=null) {
+                    baseTask.setStart(dateFormat.format(task.getStart()));//DateTime。开始日期
+                }
+                if(task.getFinish()!=null) {
+                    baseTask.setFinish(dateFormat.format(task.getFinish()));//DateTime。完成日期
+                }
+                if(task.getDuration()!=null) {
+                    baseTask.setDuration(new Double(task.getDuration().getDuration()).longValue());//Number。工期
+                }
+                if(task.getPercentageComplete()!=null) {
+                    baseTask.setPercentComplete(task.getPercentageComplete().longValue());//Number。进度
+                }
                 baseTask.setManual(task.getTaskMode().getValue());//手动模式。0是自动，1是手动。
                 baseTask.setConstraintType(task.getConstraintType().getValue());//限制类型：0越早越好；1越晚越好；2必须开始于；3必须完成于；
                 //4不得早于...开始；5不得晚于...开始；6不得早于...完成；7不得晚于...完成
@@ -310,18 +321,26 @@ public class MppUtils {
                 baseTask.setFixedDate(0);//1或0。是否固定日期(仅限于摘要任务使用),TODO 这里写死了
                 baseTask.setUid(task.getUniqueID());//任务UID(唯一性标识符)
                 baseTask.setOutlineNumber(task.getOutlineNumber());//体现树形层次和顺序
-                baseTask.setOutlineLevel(task.getOutlineLevel());//层次
-                baseTask.setWork(new Double(task.getWork().getDuration()).longValue());//Number。工时
+                if(task.getOutlineLevel()!=null) {
+                    baseTask.setOutlineLevel(task.getOutlineLevel());//层次
+                }
+                if(task.getWork()!=null) {
+                    baseTask.setWork(new Double(task.getWork().getDuration()).longValue());//Number。工时
+                }
 
                 baseTask.setWeight(100);//Number。权重	TODO 这里写死了
                 baseTask.setMilestone(task.getMilestone()?1:0);//1或0。里程碑
                 baseTask.setSummary(task.getSummary()?1:0);//1或0。摘要任务
                 baseTask.setCritical(task.getCritical()?1:0);//1或0。关键任务
-                baseTask.setPriority(task.getPriority().getValue());//Number。重要级别
+                if(task.getPriority()!=null) {
+                    baseTask.setPriority(task.getPriority().getValue());//Number。重要级别
+                }
                 baseTask.setNotes(task.getNotes());//任务备注
 
                 baseTask.setWbs(task.getWBS());//WBS
-                baseTask.setActualDuration(new Double(task.getActualDuration().getDuration()).longValue());
+                if(task.getActualDuration()!=null) {
+                    baseTask.setActualDuration(new Double(task.getActualDuration().getDuration()).longValue());
+                }
                 baseTask.setProjectUID("100");//TODO 写死了，项目ID
                 baseTask.setActualFinish(task.getActualFinish()!=null?dateFormat.format(task.getActualFinish()):null);
 

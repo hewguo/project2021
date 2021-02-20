@@ -18,6 +18,9 @@
 <#--<#else>-->
 <#--    <#assign finalUrl="${baseUrl}${mppUrl}">-->
 <#--</#if>-->
+        <div class="mini-toolbar" style="border-bottom:0;">
+            <a class="mini-button" plain="true" iconCls="icon-reload"  onclick="load()">加载</a><a class="mini-button" plain="true" iconCls="icon-save" onclick="save()">保存</a><a class="mini-button" plain="true" iconCls="icon-print" onclick="printGantt()">打印</a><span class="separator"></span><a class="mini-button" plain="true" iconCls="icon-add" onclick="addTask()">增加</a><a class="mini-button" plain="true" iconCls="icon-edit" onclick="updateTask()">修改</a><a class="mini-button" plain="true" iconCls="icon-remove" onclick="removeTask()">删除</a><span class="separator"></span><a class="mini-button" plain="true" iconCls="icon-upgrade" onclick="upgradeTask()">升级</a><a class="mini-button" plain="true" iconCls="icon-downgrade" onclick="downgradeTask()">降级</a><span class="separator"></span><a class="mini-button" plain="true" iconCls="icon-lock" onclick="onLockClick" checkOnClick="true">锁定列</a><span class="separator"></span><a class="mini-button" plain="true" iconCls="icon-zoomin" onclick="zoomIn()">放大</a><a class="mini-button" plain="true" iconCls="icon-zoomout" onclick="zoomOut()">缩小</a><span class="separator"></span><a class="mini-button" iconCls="icon-node" onclick="editTaskByTaskWindow()">任务</a><a class="mini-button" iconCls="icon-date" onclick="showCalendars()">日历</a><a class="mini-button" iconCls="icon-node" onclick="showResources()">资源</a>
+        </div>
 
         <div style="padding-bottom:5px;">
             顶层时间刻度：
@@ -43,9 +46,6 @@
             <label><input type="checkbox" onclick="toggleProgressLine(this.checked)" style="position:relative;top:2px;" />显示进度线</label>
         </div>
 
-        <div class="mini-toolbar" style="border-bottom:0;">
-            <a class="mini-button" plain="true" iconCls="icon-reload"  onclick="load()">加载</a><a class="mini-button" plain="true" iconCls="icon-save" onclick="save()">保存</a><a class="mini-button" plain="true" iconCls="icon-print" onclick="printGantt()">打印</a><span class="separator"></span><a class="mini-button" plain="true" iconCls="icon-add" onclick="addTask()">增加</a><a class="mini-button" plain="true" iconCls="icon-edit" onclick="updateTask()">修改</a><a class="mini-button" plain="true" iconCls="icon-remove" onclick="removeTask()">删除</a><span class="separator"></span><a class="mini-button" plain="true" iconCls="icon-upgrade" onclick="upgradeTask()">升级</a><a class="mini-button" plain="true" iconCls="icon-downgrade" onclick="downgradeTask()">降级</a><span class="separator"></span><a class="mini-button" plain="true" iconCls="icon-lock" onclick="onLockClick" checkOnClick="true">锁定列</a><span class="separator"></span><a class="mini-button" plain="true" iconCls="icon-zoomin" onclick="zoomIn()">放大</a><a class="mini-button" plain="true" iconCls="icon-zoomout" onclick="zoomOut()">缩小</a><span class="separator"></span><a class="mini-button" iconCls="icon-node" onclick="editTaskByTaskWindow()">任务</a><a class="mini-button" iconCls="icon-date" onclick="showCalendars()">日历</a><a class="mini-button" iconCls="icon-node" onclick="showResources()">资源</a>
-        </div>
 
         <div id="viewCt">
 
@@ -64,6 +64,7 @@
     project.setColumns([
         new PlusProject.IDColumn(),
         new PlusProject.StatusColumn(),
+        new PlusProject.WBSColumn(),
         new PlusProject.ManualColumn(),
         new PlusProject.NameColumn(),
         new PlusProject.PredecessorLinkColumn(),
