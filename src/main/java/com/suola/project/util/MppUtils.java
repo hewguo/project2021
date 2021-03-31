@@ -298,7 +298,7 @@ public class MppUtils {
                 BaseTask baseTask=new BaseTask();
 
                 //=======
-                logger.info("uid:{} -- id:{}",task.getUniqueID(),task.getID());
+//                logger.info("uid:{} -- id:{}",task.getUniqueID(),task.getID());
 
                 baseTask.setId(task.getID());//Number。序号
                 baseTask.setName(task.getName());//任务名称

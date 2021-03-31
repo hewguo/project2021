@@ -13,6 +13,19 @@
 - freemaker
 - javafx
 
+# 打包编译
+## 使用javafx-maven-plugin打包编译
+- 使用javafx-maven-plugin可以打包成脱离JDK的安装程序，支持mac/win，打包完成后可生成DMG和msi安装包。
+## 基于win的打包
+- 修改pom文件的图标项```<icon>${basedir}/src/main/resources/icons/winproj.ico</icon>```
+- Windows环境安装Inno Setup 5和 wix311
+- 设置环境变量```PATH=C:\Program Files\Inno Setup 5;C:\wix311```，让打包插件能找到安装文件
+- 执行```mvn clean jfx:native```,在taret/jfx/native目录下自动生成基于inno和基于wix的安装文件
+## 基于mac的打包
+- 修改pom文件的图标项```<icon>${basedir}/src/main/resources/icons/winproj.icns</icon>```
+- 执行```mvn clean jfx:native```,在taret/jfx/native目录下自动生成pkg文件，dmg文件会生成到临时文件中，需要找。
+
+
 ## 快速生成 Mac App icns 图标
 
 - 准备一个 1024 * 1024 的png图片，假设名字为 pic.png

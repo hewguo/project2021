@@ -64,7 +64,7 @@
     project.setColumns([
         new PlusProject.IDColumn(),
         new PlusProject.StatusColumn(),
-        new PlusProject.WBSColumn(),
+        //new PlusProject.WBSColumn(),
         new PlusProject.ManualColumn(),
         new PlusProject.NameColumn(),
         new PlusProject.PredecessorLinkColumn(),
@@ -232,8 +232,10 @@
         //var project=e.source;
         var task = e.task;
         if(task){
+            alert(task.uid);
             ShowTaskDubleWindow(task,project);
             //project.upgradeTask(task);
+
         }
     }
 
