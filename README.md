@@ -12,7 +12,7 @@
 - springboot
 - freemaker
 - javafx
-
+### 使用openjdk8或jdk8以上版本的需要使用集成openjfx的版本，
 # 打包编译
 ## 使用javafx-maven-plugin打包编译
 - 使用javafx-maven-plugin可以打包成脱离JDK的安装程序，支持mac/win，打包完成后可生成DMG和msi安装包。
