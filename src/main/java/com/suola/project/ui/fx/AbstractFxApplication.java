@@ -1,7 +1,12 @@
 package com.suola.project.ui.fx;
 
+import com.apple.eawt.AppEvent;
+import com.apple.eawt.OpenFilesHandler;
 import com.sun.javafx.application.LauncherImpl;
+import com.suola.project.model.PROJECTDB;
 import com.suola.project.ui.utils.decoratorlib.GNDecorator;
+import com.suola.project.util.MppOpenFilesHandler;
+import com.suola.project.util.MppUtils;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.application.Preloader;
@@ -24,6 +29,7 @@ import static com.sun.javafx.application.LauncherImpl.launchApplication;
 public abstract class AbstractFxApplication extends Application {
 
 	protected static Logger LOGGER = LoggerFactory.getLogger(AbstractFxApplication.class);
+	//protected static MppOpenFilesHandler mppOpenFilesHandler=new MppOpenFilesHandler();
 
 	// spring context
 	protected static ConfigurableApplicationContext applicationContext;
@@ -107,11 +113,14 @@ public abstract class AbstractFxApplication extends Application {
 	@Override
 	public void start(Stage primary) {
 
+		//LOGGER.info("...start stage...");
 		GNDecorator decorator = new GNDecorator();
 		stageManager = applicationContext.getBean(StageManager.class, primary, decorator);
 		stageManager.switchScene(initView);
 		//((VBox)(stageManager.getDecorator().getScene().getRoot())).getChildren().addAll(menuBar);
 		stageManager.showDecorator();
+		//LOGGER.info("...end stage...");
+
 	}
 
 	/*

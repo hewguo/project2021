@@ -37,6 +37,7 @@ public class StageManager {
 	private final GNDecorator decorator;
 
 	public StageManager(SpringFXMLLoader springFXMLLoader, Stage stage, GNDecorator decorator) {
+
 		//修改左上角的按钮，添加菜单
 		Class cDecorator=decorator.getClass();
 		try{
@@ -56,6 +57,7 @@ public class StageManager {
 			WebviewController webviewController= ApplicationContextProvider.getBean(WebviewController.class);
 			ServerConfig serverConfig=ApplicationContextProvider.getBean(ServerConfig.class);
 
+			//文件打开
 			openMenu.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent event) {
@@ -70,6 +72,7 @@ public class StageManager {
 
 
 					File file=fileChooser.showOpenDialog(primaryStage);
+					//openFileView(file);
 					if(file!=null){
 
 						MppUtils mppUtils=new MppUtils();
@@ -96,6 +99,7 @@ public class StageManager {
 				}
 			});
 
+			//退出
 			exitMenu.setOnAction(new EventHandler<ActionEvent>(){
 
 				@Override
@@ -137,6 +141,7 @@ public class StageManager {
 				getClass().getResource("/styles/theme/master.css").toExternalForm());
 		decorator.setMaximized(true);
 		decorator.getStage().getIcons().add(new Image("/icons/logo2.png"));
+
 	}
 	
 	/**
@@ -148,6 +153,34 @@ public class StageManager {
 		Parent viewRootNodeHierarchy = loadViewNodeHierarchy(view.fxml());
 		decorator.setContent(viewRootNodeHierarchy);
 	}
+
+//	public void openFileView(File file){
+//		WebviewController webviewController= ApplicationContextProvider.getBean(WebviewController.class);
+//		ServerConfig serverConfig=ApplicationContextProvider.getBean(ServerConfig.class);
+//		if(file!=null){
+//
+//			MppUtils mppUtils=new MppUtils();
+//			PROJECTDB.getInstance().setProjectModel(mppUtils.readFile(file.getAbsolutePath()));
+//
+//			int serverPort=0;
+//			try{
+//				serverPort=serverConfig.getServerPort();
+//			}catch (Exception ex){
+//
+//			}
+//
+//			StageManager stageManager= ApplicationContextProvider.getBean(StageManager.class);
+//
+//			if(PROJECTDB.getInstance().getProjectModel()!=null){
+//				webviewController.setUrl("http://localhost:"+serverPort+"/projectview");
+//
+//				stageManager.getDecorator().setTitle("Project2021-"+file.getName());
+//			}else {
+//				webviewController.setUrl("http://localhost:"+serverPort+"/");
+//				stageManager.getDecorator().setTitle("Project2021");
+//			}
+//		}
+//	}
 	
 	/**
 	 * replace content for pane

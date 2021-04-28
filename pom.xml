@@ -126,7 +126,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.suola.project.ProjectViewerApplication</mainClass>
+                    <mainClass>com.suola.project.Launch</mainClass>
                 </configuration>
                 <executions>
                     <execution>
@@ -142,7 +142,7 @@
                 <version>8.8.3</version>
                 <configuration>
                     <!-- 启动类 -->
-                    <mainClass>com.suola.project.ProjectViewerApplication</mainClass>
+                    <mainClass>com.suola.project.Launch</mainClass>
                     <!-- 运行文件名 ${project.build.finalName}-->
                     <appName>Project2021</appName>
                     <!-- 启动图标  默认位置src\main\deploy\package\windows\-->
@@ -151,6 +151,7 @@
 <!--                        <icon>${basedir}/src/main/resources/icons/winproj.ico</icon>-->
                         <!-- mac 图标设置 -->
                         <icon>${basedir}/src/main/resources/icons/winproj.icns</icon>
+<!--                        <CFBundleDocumentTypes>mpp</CFBundleDocumentTypes>-->
                     </bundleArguments>
                     <!-- 菜单 -->
                     <needMenu>true</needMenu>
@@ -158,13 +159,40 @@
                     <needShortcut>true</needShortcut>
                     <!-- 公司名 -->
                     <vendor>suola</vendor>
+                    <fileAssociations>
+                        <fileAssociation>
+                            <description>project2021</description>
+                            <extensions>mpp</extensions>
+                            <contentType>application/suola.projectSession</contentType>
+                            <icon>${basedir}/src/main/resources/icons/winproj.icns</icon>
+                        </fileAssociation>
+                    </fileAssociations>
                 </configuration>
             </plugin>
-
+<!--            <plugin>-->
+<!--                <groupId>org.openjfx</groupId>-->
+<!--                <artifactId>javafx-maven-plugin</artifactId>-->
+<!--                <version>0.0.5</version>-->
+<!--                <configuration>-->
+<!--                    <mainClass>com.suola.project.ProjectViewerApplication</mainClass>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
                 <version>2.5.2</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <compilerArguments>
+                        <verbose/>
+                        <bootclasspath>${java.home}/lib/rt.jar</bootclasspath>
+                    </compilerArguments>
+                </configuration>
             </plugin>
         </plugins>
     </build>
