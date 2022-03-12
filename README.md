@@ -12,7 +12,11 @@
 - springboot
 - freemaker
 - javafx
-### 使用openjdk8或jdk8以上版本的需要使用集成openjfx的版本，
+### 使用openjdk8或jdk8以上版本的需要使用集成openjfx的版本，JDK使用AZUL1.8JFX
+- [Linux下载地址](https://cdn.azul.com/zulu/bin/zulu8.60.0.21-ca-fx-jdk8.0.322-linux_x64.tar.gz)
+- [mac Intel下载地址](https://cdn.azul.com/zulu/bin/zulu8.60.0.21-ca-fx-jdk8.0.322-macosx_x64.zip)
+- [mac M1下载地址](https://cdn.azul.com/zulu/bin/zulu8.60.0.21-ca-fx-jdk8.0.322-macosx_aarch64.tar.gz)
+- [Windows下载地址](https://cdn.azul.com/zulu/bin/zulu8.60.0.21-ca-fx-jdk8.0.322-win_x64.zip)
 # 打包编译
 ## 使用javafx-maven-plugin打包编译
 - 使用javafx-maven-plugin可以打包成脱离JDK的安装程序，支持mac/win，打包完成后可生成DMG和msi安装包。
