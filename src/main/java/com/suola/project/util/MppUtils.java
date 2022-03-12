@@ -266,7 +266,6 @@ public class MppUtils {
                 resourceName.append(resource.getName()+" - " + resource.getPeakUnits() + ",");
             }
         }
-//        System.out.println("资源名称: " + resourceName.toString());
     }
 
     public void printTaskTree(Task task){
@@ -459,7 +458,6 @@ public class MppUtils {
 
             //读取文件信息
 
-            //logger.info(projectModel.toString());
             return projectModel;
         }catch (Exception ex){
             return null;
