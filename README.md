@@ -1,4 +1,8 @@
 # Project Viewer2021
+## 更新日志
+### 2022.3.13
+- 更新springboot版本至2.5.10，解决springframework、jetty漏洞
+- 使用Murphysec Code Scan进行代码扫描，确保代码无安全漏洞
 ## 功能
 - 读取MS project文件，并能显示
 - 修改MS project文件
